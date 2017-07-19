@@ -11,28 +11,29 @@ public class OlxSystemTest  {
     private ProdutosPage produtos;
     
     @Before
-    public void inicializa() {
+    public void inicializar() {
     	System.setProperty("webdriver.chrome.driver","C:/users/filip/Downloads/chromedriver.exe ");
     	this.driver =  new ChromeDriver();
         this.produtos = new ProdutosPage(driver);
     }
     
 	@Test
-    public void pesquisaProdutoEImprimeResultados() throws Exception{
-		produtos.visita();
-		produtos.pesquisa();
+    public void pesquisarProdutoEImprimeResultados() throws Exception{
+		produtos.visitar();
+		produtos.pesquisar();
 		produtos.imprimirProdutosPesquisa();
 	}
 	
 	@Test
-	public void acessaSegundaPagina() throws Exception{
-		produtos.visita();
-		produtos.pesquisa();
-		produtos.paginacao();
+	public void acessarSegundaPaginaEPrintarProduto() throws Exception{
+		produtos.visitar();
+		produtos.pesquisar();
+		produtos.acessarItemSegundaPagina();
+		produtos.printarTela();
 	}
 	
 	@After
-    public void encerraBrowser() {
+    public void encerrarBrowser() {
         driver.close();
     }
 }
